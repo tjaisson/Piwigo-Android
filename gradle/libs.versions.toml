@@ -5,7 +5,7 @@ kotlinStdlibJdk8 = "1.8.0"
 lifecycle = "2.7.0"
 okhttpVersion = "4.9.0"
 retrofitVersion = "2.9.0"
-roomRuntime = "2.2.5"
+room = "2.6.1"
 
 [libraries]
 dagger = { module = "com.google.dagger:dagger", version.ref = "daggerVersion" }

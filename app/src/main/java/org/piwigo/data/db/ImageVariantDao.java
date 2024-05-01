@@ -49,10 +49,10 @@ public abstract class ImageVariantDao {
     public abstract List<VariantWithImage> getVariantsWithImage(Integer imageId);
 
     @Transaction
-    @Query("SELECT * FROM ImageVariant INNER JOIN ImageCategoryMap ON ImageCategoryMap.imageId = ImageVariant.imageId WHERE categoryId = :categoryId")
+    @Query("SELECT id, ImageVariant.imageId, height, width, storageLocation, lastModified, url FROM ImageVariant INNER JOIN ImageCategoryMap ON ImageCategoryMap.imageId = ImageVariant.imageId WHERE categoryId = :categoryId")
     public abstract Single<List<VariantWithImage>> getVariantsWithImageInCategory(Integer categoryId);
 
-    public class VariantInfo{
+    public class VariantInfo {
         public int imageId;
         public String url;
         public String lastModified;

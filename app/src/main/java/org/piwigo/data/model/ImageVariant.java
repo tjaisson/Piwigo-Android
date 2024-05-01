@@ -29,14 +29,31 @@ import java.io.Serializable;
 
 import static androidx.room.ForeignKey.CASCADE;
 
-@Entity(indices = {@Index(value = {"url"},
-        unique = true)})
 /**
  * This is basically a derivative, but we store here as variant only those which are locally stored
  * but it's not guaranteed that they will stay here.
  */
+@Entity(
+        indices = {
+                @Index(
+                        value = {"url"},
+                        unique = true
+                ),
+                @Index(
+                        value = {"imageId"}
+                )
+        },
+        foreignKeys = {
+                @ForeignKey(
+                        entity = Image.class,
+                        parentColumns = "id",
+                        childColumns = "imageId",
+                        onDelete = ForeignKey.CASCADE
+                )
+        }
+)
 public class ImageVariant implements Serializable {
-    public ImageVariant(int imageId, int width, int height, String storageLocation, String lastModified, String url){
+    public ImageVariant(int imageId, int width, int height, String storageLocation, String lastModified, String url) {
         this.imageId = imageId;
         this.width = width;
         this.height = height;
@@ -48,11 +65,6 @@ public class ImageVariant implements Serializable {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    @ForeignKey
-            (entity = Image.class,
-                    parentColumns = "id",
-                    childColumns = "imageId",
-                    onDelete = CASCADE)
     public int imageId;
 
     public int height;

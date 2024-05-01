@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "c9b07fae9a4e2081b9fc15a76f50cf83",
+    "identityHash": "11844a735a5baa5ce64b042f7848259b",
     "entities": [
       {
         "tableName": "Image",
@@ -80,7 +80,7 @@
       },
       {
         "tableName": "ImageVariant",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `imageId` INTEGER NOT NULL, `height` INTEGER NOT NULL, `width` INTEGER NOT NULL, `storageLocation` TEXT, `lastModified` TEXT, `url` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `imageId` INTEGER NOT NULL, `height` INTEGER NOT NULL, `width` INTEGER NOT NULL, `storageLocation` TEXT, `lastModified` TEXT, `url` TEXT, FOREIGN KEY(`imageId`) REFERENCES `Image`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -139,9 +139,29 @@
               "url"
             ],
             "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_ImageVariant_url` ON `${TABLE_NAME}` (`url`)"
+          },
+          {
+            "name": "index_ImageVariant_imageId",
+            "unique": false,
+            "columnNames": [
+              "imageId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_ImageVariant_imageId` ON `${TABLE_NAME}` (`imageId`)"
           }
         ],
-        "foreignKeys": []
+        "foreignKeys": [
+          {
+            "table": "Image",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "imageId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
       },
       {
         "tableName": "Category",
@@ -309,7 +329,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c9b07fae9a4e2081b9fc15a76f50cf83')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '11844a735a5baa5ce64b042f7848259b')"
     ]
   }
 }
