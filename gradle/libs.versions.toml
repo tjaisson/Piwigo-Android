@@ -1,0 +1,12 @@
+[versions]
+agp = "8.3.2"
+kotlinStdlibJdk8 = "1.8.0"
+lifecycleExtensions = "2.2.0"
+
+[libraries]
+kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlinStdlibJdk8" }
+lifecycle-compiler = { module = "androidx.lifecycle:lifecycle-compiler", version.ref = "lifecycleExtensions" }
+lifecycle-extensions = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "lifecycleExtensions" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }

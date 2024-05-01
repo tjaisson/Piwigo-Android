@@ -25,14 +25,7 @@ import android.os.Build;
 
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.databinding.DataBindingUtil;
-import androidx.multidex.MultiDex;
 
-import org.acra.ACRA;
-import org.acra.ReportField;
-import org.acra.annotation.AcraCore;
-import org.acra.annotation.AcraDialog;
-import org.acra.annotation.AcraMailSender;
-import org.acra.data.StringFormat;
 import org.piwigo.helper.DialogHelper;
 import org.piwigo.helper.NetworkHelper;
 import org.piwigo.helper.NotificationHelper;
@@ -49,25 +42,7 @@ import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasAndroidInjector;
 
-@AcraCore(reportContent = { ReportField.APP_VERSION_CODE,
-        ReportField.APP_VERSION_NAME,
-        ReportField.USER_COMMENT,
-        ReportField.SHARED_PREFERENCES,
-        ReportField.ANDROID_VERSION,
-        ReportField.CUSTOM_DATA,
-        ReportField.STACK_TRACE,
-        ReportField.BUILD_CONFIG,
-        ReportField.CRASH_CONFIGURATION,
-        ReportField.DISPLAY
-    },
-    alsoReportToAndroidFramework = true,
-    reportFormat = StringFormat.KEY_VALUE_LIST
-)
-@AcraMailSender(mailTo = "android@piwigo.org")
-@AcraDialog(resCommentPrompt = R.string.crash_dialog_comment_prompt,
-        resText = R.string.crash_dialog_text,
-        resTitle = R.string.app_name,
-        resIcon = R.mipmap.ic_launcher)
+
 public class PiwigoApplication extends Application implements HasAndroidInjector {
 
     @Inject DispatchingAndroidInjector<Object> androidInjector;
@@ -90,9 +65,6 @@ public class PiwigoApplication extends Application implements HasAndroidInjector
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-        MultiDex.install(base);
-        if (!BuildConfig.DEBUG)
-            ACRA.init(this);
     }
 
     private void initializeDependencyInjection() {

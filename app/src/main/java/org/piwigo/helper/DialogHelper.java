@@ -4,7 +4,6 @@ import android.content.Context;
 
 import androidx.appcompat.app.AlertDialog;
 
-import org.acra.ACRA;
 import org.piwigo.R;
 
 public class DialogHelper {
@@ -49,15 +48,6 @@ public class DialogHelper {
         builder.setTitle(title)
                 .setMessage(description + "\n\n" + problem.getLocalizedMessage())
                 .setPositiveButton(R.string.button_ok, (dialog, which) -> {
-                    dialog.cancel();
-                })
-                .setNegativeButton(R.string.button_report, (dialog, id) -> {
-                    ACRA.getErrorReporter().putCustomData("REPORT_TITLE", title);
-                    ACRA.getErrorReporter().putCustomData("REPORT_DESC", description);
-                    ACRA.getErrorReporter().putCustomData("REPORT_DETAIL", reportDetail);
-                    ACRA.getErrorReporter().putCustomData("REPORT", "TRUE");
-                    ACRA.getErrorReporter().handleSilentException(problem);
-                    ACRA.getErrorReporter().putCustomData("REPORT", "FALSE");
                     dialog.cancel();
                 })
                 .show();
