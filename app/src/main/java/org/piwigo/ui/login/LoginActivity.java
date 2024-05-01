@@ -23,7 +23,7 @@ import android.accounts.AccountAuthenticatorActivity;
 import android.accounts.AccountAuthenticatorResponse;
 import android.accounts.AccountManager;
 
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -90,7 +90,7 @@ public class LoginActivity extends BaseActivity {
         if (authenticatorResponse != null) {
             authenticatorResponse.onRequestContinued();
         }
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel.class);
+        viewModel = new ViewModelProvider(this, viewModelFactory).get(LoginViewModel.class);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         binding.setViewModel(viewModel);

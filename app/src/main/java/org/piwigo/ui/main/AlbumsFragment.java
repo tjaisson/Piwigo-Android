@@ -40,7 +40,7 @@ import javax.inject.Inject;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -94,7 +94,7 @@ public class AlbumsFragment extends BaseFragment implements SwipeRefreshLayout.O
 
     @Override
     public void onResume() {
-        MainViewModel vm = ViewModelProviders.of(this.getActivity(), viewModelFactory).get(MainViewModel.class);
+        MainViewModel vm = new ViewModelProvider(this.getActivity(), viewModelFactory).get(MainViewModel.class);
         binding.getViewModel().setMainViewModel(vm);
         vm.title.set(categoryName);
         vm.showingRootAlbum.set(categoryID == 0);
@@ -122,7 +122,7 @@ public class AlbumsFragment extends BaseFragment implements SwipeRefreshLayout.O
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        AlbumsViewModel viewModel = ViewModelProviders.of(this, viewModelFactory).get(AlbumsViewModel.class);
+        AlbumsViewModel viewModel = new ViewModelProvider(this, viewModelFactory).get(AlbumsViewModel.class);
         binding.setViewModel(viewModel);
         binding.getViewModel().loadAlbums(categoryID);
     }

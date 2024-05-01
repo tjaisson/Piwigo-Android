@@ -21,7 +21,7 @@ package org.piwigo.ui.account;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import androidx.databinding.DataBindingUtil;
 import android.os.Build;
@@ -70,7 +70,7 @@ public class ManageAccountsActivity extends BaseActivity {
         userManager.refreshAccounts();
         ActivityManageAccountsBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_manage_accounts);
 
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ManageAccountsViewModel.class);
+        viewModel = new ViewModelProvider(this, viewModelFactory).get(ManageAccountsViewModel.class);
 
         binding.setViewModel(viewModel);
         Toolbar toolbar = findViewById(R.id.account_toolbar);
