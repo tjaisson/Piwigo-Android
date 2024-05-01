@@ -1,7 +1,8 @@
 [versions]
 agp = "8.4.0"
 daggerVersion = "2.51.1"
-kotlinStdlibJdk8 = "1.8.0"
+guava = "29.0-android"
+kotlinStdlibJdk8 = "1.9.20"
 lifecycle = "2.7.0"
 okhttpVersion = "4.9.0"
 retrofitVersion = "2.9.0"
@@ -14,6 +15,7 @@ dagger-android-support = { module = "com.google.dagger:dagger-android-support", 
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "daggerVersion" }
 dagger-android-processor = { module = "com.google.dagger:dagger-android-processor", version.ref = "daggerVersion" }
 
+guava = { module = "com.google.guava:guava", version.ref = "guava" }
 kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlinStdlibJdk8" }
 
 lifecycle-compiler = { module = "androidx.lifecycle:lifecycle-compiler", version.ref = "lifecycle" }
@@ -26,10 +28,11 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 retrofit-adapter-rxjava2 = { module = "com.squareup.retrofit2:adapter-rxjava2", version.ref = "retrofitVersion" }
 retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofitVersion" }
 
-room-guava = { module = "androidx.room:room-guava", version.ref = "roomRuntime" }
-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
-room-rxjava2 = { module = "androidx.room:room-rxjava2", version.ref = "roomRuntime" }
-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
+room-guava = { module = "androidx.room:room-guava", version.ref = "room" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-rxjava2 = { module = "androidx.room:room-rxjava2", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
+room = { id ="androidx.room", version.ref = "room" }
