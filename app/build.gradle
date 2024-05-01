@@ -51,7 +51,6 @@ android {
     }
 }
 
-def daggerVersion = '2.29.1'
 def okhttpVersion = '4.9.0'
 def retrofitVersion = '2.9.0'
 def picassoVersion = '2.8'
@@ -66,14 +65,15 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
-    implementation "com.google.dagger:dagger:${daggerVersion}"
     implementation libs.lifecycle.extensions
     annotationProcessor libs.lifecycle.compiler
 
-    annotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
-    implementation "com.google.dagger:dagger-android:${daggerVersion}"
-    implementation "com.google.dagger:dagger-android-support:${daggerVersion}"
-    annotationProcessor "com.google.dagger:dagger-android-processor:${daggerVersion}"
+    implementation libs.dagger
+    annotationProcessor libs.dagger.compiler
+    implementation libs.dagger.android
+    implementation libs.dagger.android.support
+    annotationProcessor libs.dagger.android.processor
+
     implementation "com.squareup.okhttp3:okhttp:${okhttpVersion}"
     implementation "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}"
     implementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
@@ -110,7 +110,7 @@ dependencies {
     testImplementation("com.squareup.assertj:assertj-android:${assertjVersion}") {
         exclude group: 'com.android.support'
     }
-    testAnnotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
+    testAnnotationProcessor libs.dagger.compiler
     testImplementation 'androidx.arch.core:core-testing:2.1.0'
     testImplementation 'org.mockito:mockito-core:3.5.13'
     testImplementation 'com.google.guava:guava:29.0-android'

@@ -1,10 +1,18 @@
 [versions]
 agp = "8.3.2"
+daggerVersion = "2.29.1"
 kotlinStdlibJdk8 = "1.8.0"
 lifecycleExtensions = "2.2.0"
 
 [libraries]
+dagger = { module = "com.google.dagger:dagger", version.ref = "daggerVersion" }
+dagger-android = { module = "com.google.dagger:dagger-android", version.ref = "daggerVersion" }
+dagger-android-support = { module = "com.google.dagger:dagger-android-support", version.ref = "daggerVersion" }
+dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "daggerVersion" }
+dagger-android-processor = { module = "com.google.dagger:dagger-android-processor", version.ref = "daggerVersion" }
+
 kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlinStdlibJdk8" }
+
 lifecycle-compiler = { module = "androidx.lifecycle:lifecycle-compiler", version.ref = "lifecycleExtensions" }
 lifecycle-extensions = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "lifecycleExtensions" }
 
