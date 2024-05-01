@@ -28,7 +28,6 @@ import org.piwigo.data.model.ImageVariant;
 import org.piwigo.data.model.VariantWithImage;
 
 import java.util.List;
-import java.util.Map;
 
 import io.reactivex.Single;
 

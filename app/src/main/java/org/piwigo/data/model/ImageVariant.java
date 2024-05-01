@@ -18,16 +18,12 @@
 
 package org.piwigo.data.model;
 
-import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
-import androidx.room.Relation;
 
 import java.io.Serializable;
-
-import static androidx.room.ForeignKey.CASCADE;
 
 /**
  * This is basically a derivative, but we store here as variant only those which are locally stored
